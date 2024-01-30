@@ -15,7 +15,6 @@ data "aws_ami" "app_ami" {
 }
 
 data "aws_vpc" "default" {
-  
 }
 
 resource "aws_instance" "blog" {
@@ -27,6 +26,7 @@ resource "aws_instance" "blog" {
   tags = {
     Name = "Learning Terraform"
   }
+}
 
 resource "aws_security_group" "blog" {
   name        = "blog"
@@ -54,6 +54,7 @@ resource "aws_security_group_rule" "blog_https_in" {
 
   security_group_id = aws_security_group.blog.id
 }
+
 resource "aws_security_group_rule" "blog_all_out" {
   type        = "egress"
   from_port   = 0
